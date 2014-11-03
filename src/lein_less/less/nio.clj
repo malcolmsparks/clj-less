@@ -1,4 +1,4 @@
-(ns leiningen.less.nio
+(ns lein-less.less.nio
   (:refer-clojure :exclude [resolve])
   (:require [clojure.java.io :as jio])
   (:import (java.nio.file FileSystems FileSystem Files FileVisitor Path Paths FileVisitResult

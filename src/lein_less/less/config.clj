@@ -1,5 +1,5 @@
-(ns leiningen.less.config
-  (:require [leiningen.less.nio :as nio])
+(ns lein-less.less.config
+  (:require [lein-less.less.nio :as nio])
   (:import [java.nio.file Path]))
 
 (defn- normalise [project raw-config]

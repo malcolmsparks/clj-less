@@ -1,11 +1,11 @@
-(ns leiningen.less
+(ns lein-less.less
   (:require
-   (leiningen.less
+   (lein-less.less
     [compiler :as compiler]
     [config :refer [config]]
     [nio :as nio])
-   [leiningen.less.engine :as engine])
-  (:import (leiningen.less LessError)))
+   [lein-less.less.engine :as engine])
+  (:import (lein-less.less LessError)))
 
 (defn- report-error [^LessError error]
   (binding [*out* *err*]

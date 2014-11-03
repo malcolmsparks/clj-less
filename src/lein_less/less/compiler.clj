@@ -1,17 +1,17 @@
-(ns leiningen.less.compiler
+(ns lein-less.less.compiler
   (:refer-clojure :exclude [compile])
-  (:require (leiningen.less [nio :as nio]
+  (:require (lein-less.less [nio :as nio]
                             [engine :as engine])
             [clojure.java.io :as io])
   (:import [java.nio.file Path]
            (java.io IOException)
            (javax.script ScriptEngineManager ScriptEngine ScriptContext)
-           (leiningen.less LessError)))
+           (lein-less.less LessError)))
 
 
 (def version "1.7.2")
-(def less-js (format "leiningen/less/less-rhino-%s.js" version))
-(def lessc-js (format "leiningen/less/lessc.js"))
+(def less-js (format "lein_less.less/less-rhino-%s.js" version))
+(def lessc-js (format "lein_less.less/lessc.js"))
 
 
 (defn initialise
