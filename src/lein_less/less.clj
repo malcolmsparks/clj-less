@@ -11,7 +11,7 @@
   (binding [*out* *err*]
     (println (.getMessage error))))
 
-(defn- run-compiler
+(defn run-compiler
   "Run the lesscss compiler."
   [project {:keys [source-paths target-path] :as config}]
   (engine/with-engine "javascript"
