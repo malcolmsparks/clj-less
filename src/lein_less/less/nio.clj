@@ -201,3 +201,16 @@
           (recur)))
       (catch InterruptedException ex
         nil))))
+
+(defn adapt-paths [{:keys [root source-paths target-path] :as less-data}]
+
+  (let [^Path root (as-path root)]
+    (assert (exists? root))
+    {:source-paths (->> source-paths
+                        (map (partial resolve root))
+                        (map absolute)
+                        (filter exists?)
+                        vec)
+     :target-path (->> target-path
+                       (resolve root)
+                       (absolute))}))

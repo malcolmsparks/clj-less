@@ -19,7 +19,6 @@
   ([^String engine-type]
    (.getEngineByName engine-manager engine-type)))
 
-
 (defn with-engine* [engine-param body-fn]
   (let [engine (if (string? engine-param) (create-engine engine-param) engine-param)]
     (when-not (instance? ScriptEngine engine)
