@@ -1,7 +1,8 @@
-(ns leiningen.less.engine-test
+(ns lein-less.less.engine-test
   (:require [clojure.test :refer :all]
-            [leiningen.less.engine :refer :all])
-  (:import (leiningen.less LessError)))
+            [lein-less.less.engine :refer :all])
+  (:import (lein_less.less LessError)))
+
 
 
 (deftest test-default-engine
@@ -42,7 +43,7 @@
   (with-engine "nashorn"
     (is (thrown-with-msg? LessError #"^Error: Oops" (eval! "throw Error('Oops')")))
     (is (thrown-with-msg? LessError #"^Oops$"
-                          (eval! "var error = Java.type('clojure.lang.RT')['var']('leiningen.less.engine', 'error!');
+                          (eval! "var error = Java.type('clojure.lang.RT')['var']('lein-less.less.engine', 'error!');
                             error['invoke'](null, 'Oops');")))
     (is (thrown? NullPointerException
                  (eval! "var rt_var = Java.type('clojure.lang.RT')['var'];

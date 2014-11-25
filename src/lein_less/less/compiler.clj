@@ -10,15 +10,17 @@
 
 
 (def version "1.7.2")
-(def less-js (format "lein_less.less/less-rhino-%s.js" version))
-(def lessc-js (format "lein_less.less/lessc.js"))
+(def less-js (format "lein_less/less/less-rhino-%s.js" version))
+(def lessc-js (format "lein_less/less/lessc.js"))
 
 
 (defn initialise
   "Load less compiler resources required to compile less files to css. Must be called before invoking compile."
   []
   (engine/eval! (io/resource less-js) less-js)
-  (engine/eval! (io/resource lessc-js) lessc-js))
+  (engine/eval! (io/resource lessc-js) lessc-js)
+  )
+
 
 
 (defn compile-resource

@@ -18,5 +18,5 @@
     (compiler/initialise)
     (println "Compiling {less} css:")
     (let [units (nio/compilation-units source-paths target-path)
-          compile (partial compiler/compile-project project units abort-on-error)]
+          compile (partial compiler/compile-project project units report-error)]
       (println "Done."))))
