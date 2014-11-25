@@ -5,7 +5,7 @@
     [config :refer [config]]
     [nio :as nio])
    [lein-less.less.engine :as engine])
-  (:import (lein-less.less LessError)))
+  (:import (lein_less.less LessError)))
 
 (defn- report-error [^LessError error]
   (binding [*out* *err*]

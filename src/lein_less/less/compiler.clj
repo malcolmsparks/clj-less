@@ -6,7 +6,7 @@
   (:import [java.nio.file Path]
            (java.io IOException)
            (javax.script ScriptEngineManager ScriptEngine ScriptContext)
-           (lein-less.less LessError)))
+           (lein_less.less LessError)))
 
 
 (def version "1.7.2")

@@ -3,7 +3,7 @@
   (:import (javax.script ScriptEngineManager ScriptEngine ScriptContext Bindings ScriptException)
            (java.nio.file Path)
            (java.io File Reader)
-           (lein-less.less LessError)
+           (lein_less.less LessError)
            (java.util Map)))
 
 
