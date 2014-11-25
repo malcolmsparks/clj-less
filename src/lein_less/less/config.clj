@@ -15,6 +15,6 @@
 
 (defn config [project]
   (when (nil? (:less project))
-    (println "WARNING: no :less entry found in project definition."))
+    (assert false "ERROR: no :less entry found in project definition."))
   (let [raw-config (:less project)]
     (normalise project raw-config)))
