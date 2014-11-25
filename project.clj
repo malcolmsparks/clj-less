@@ -5,6 +5,7 @@
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
 
   :java-source-paths ["java"]
+  :resource-paths ["resources"]
   :javac-options ["-target" "1.6" "-source" "1.6" "-Xlint:-options"]
 
   :min-lein-version "2.3.0"
