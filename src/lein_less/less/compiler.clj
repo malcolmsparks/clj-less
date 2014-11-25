@@ -31,7 +31,7 @@
 
 
 (defn compile-project
-  "Take a normalised project configuration and a sequence of src/dst pairs, compiles each pair."
+  "Take a sequence of src/dst pairs, compiles each pair."
   [units on-error]
   (println "jau!" units)
   (doseq [{:keys [^Path src ^Path dst]} units]

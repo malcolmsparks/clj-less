@@ -13,10 +13,11 @@
 
 (defn run-compiler
   "Run the lesscss compiler."
-  [{:keys [source-paths target-path] :as config}]
-  (engine/with-engine "javascript"
-    (compiler/initialise)
-    (println "Compiling {less} css:")
-    (let [units (nio/compilation-units source-paths target-path)]
-      (compiler/compile-project units report-error)
+  [data]
+  (let [{:keys [source-paths target-path]} (config data)]
+    (engine/with-engine "javascript"
+      (compiler/initialise)
+      (println "Compiling {less} css:")
+      (-> (nio/compilation-units source-paths target-path)
+          (compiler/compile-project report-error))
       (println "Done."))))

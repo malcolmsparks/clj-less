@@ -58,12 +58,11 @@
   (assoc jio/default-streams-impl
     :make-input-stream (fn [^Path p _] (Files/newInputStream p default-open-options))
     :make-output-stream (fn [^Path p opts] (Files/newOutputStream p default-open-options))))
-
+;; I removed relatives references as I realised that paths coming here were absolute
 (defn fstr
-  "Returns a string representing the file, relative to the project root."
+  "Returns a string representing the file"
   [path]
-  (.toString (as-path path)))
-
+  (str (as-path path)))
 
 
 (defn resolve
@@ -189,7 +188,7 @@
     (println "Found {less} source paths: ")
     (doseq [path paths
             child (descendents directory? path)]
-      (println (format "  %s" (fstr project child)))
+      (println (format "  %s" (fstr child)))
       (.register ^Path child watcher watch-opts-cdm))
     (println "Watching for changes...")
     (callback)
