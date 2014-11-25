@@ -202,9 +202,9 @@
       (catch InterruptedException ex
         nil))))
 
-(defn adapt-paths [{:keys [root source-paths target-path] :as less-data}]
+(defn adapt-paths [{:keys [project-root source-paths target-path] :as less-data}]
 
-  (let [^Path root (as-path root)]
+  (let [^Path root (as-path project-root)]
     (assert (exists? root))
     {:source-paths (->> source-paths
                         (map (partial resolve root))

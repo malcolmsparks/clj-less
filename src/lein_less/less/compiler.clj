@@ -33,7 +33,6 @@
 (defn compile-project
   "Take a sequence of src/dst pairs, compiles each pair."
   [units on-error]
-  (println "jau!" units)
   (doseq [{:keys [^Path src ^Path dst]} units]
     (println (format "%s => %s" (nio/fstr  src) (nio/fstr  dst)))
     (try
