@@ -61,8 +61,10 @@
 
 (defn fstr
   "Returns a string representing the file, relative to the project root."
-  [project path]
-  (.toString (.relativize (as-path (:root project)) (as-path path))))
+  [path]
+  (.toString (as-path path)))
+
+
 
 (defn resolve
   "Resolve the pathish argument relative the the first."

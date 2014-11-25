@@ -32,9 +32,10 @@
 
 (defn compile-project
   "Take a normalised project configuration and a sequence of src/dst pairs, compiles each pair."
-  [project units on-error]
+  [units on-error]
+  (println "jau!" units)
   (doseq [{:keys [^Path src ^Path dst]} units]
-    (println (format "%s => %s" (nio/fstr project src) (nio/fstr project dst)))
+    (println (format "%s => %s" (nio/fstr  src) (nio/fstr  dst)))
     (try
       (compile-resource src dst)
       (catch LessError ex
