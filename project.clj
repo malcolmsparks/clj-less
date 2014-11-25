@@ -10,6 +10,5 @@
 
   :min-lein-version "2.3.0"
 
-  :profiles {:dev {:dependencies [[org.clojure/clojure "1.5.1" :optional true]
-                                  [leiningen-core "2.3.4" :optional true]]}}
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.5.1" :optional true]]}}
   )
