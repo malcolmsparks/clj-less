@@ -183,24 +183,6 @@
       (remove empty?)
       )))
 
-(defn watch-resources [project paths callback]
-  (let [^WatchService watcher (.newWatchService (FileSystems/getDefault))]
-    (println "Found {less} source paths: ")
-    (doseq [path paths
-            child (descendents directory? path)]
-      (println (format "  %s" (fstr child)))
-      (.register ^Path child watcher watch-opts-cdm))
-    (println "Watching for changes...")
-    (callback)
-    (try
-      (loop []
-        (let [key (.take watcher)]
-          (callback)
-          (.pollEvents key)
-          (.reset key)
-          (recur)))
-      (catch InterruptedException ex
-        nil))))
 
 (defn adapt-paths [{:keys [project-root source-paths target-path] :as less-data}]
 
