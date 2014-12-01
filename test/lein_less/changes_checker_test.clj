@@ -14,8 +14,11 @@
 
 (.isDirectory(first (file-seq (io/file "sample/example"))))
 
-(assert (complement (less/synchronized? "sample/.DS_Store" "sample/example/project.clj")))
-(assert (less/synchronized? "sample/example/less/sample.less" "sample/example/project.clj"))
 
-(assert (complement  (less/is-synchronized? "sample/example" "sample/.DS_Store" )))
-(assert(less/is-synchronized? "sample/example" "sample/example/project.clj"))
+(less/is-synchronized? "sample/bootstrap" "sample/css-target/bootstrap.css")
+
+#_( (assert (complement (less/synchronized? "sample/.DS_Store" "sample/example/project.clj")))
+     (assert (less/synchronized? "sample/example/less/sample.less" "sample/example/project.clj"))
+
+     (assert (complement  (less/is-synchronized? "sample/example" "sample/.DS_Store" )))
+     (assert (complement (less/is-synchronized? "sample/example" "sample/example/project.clj"))))

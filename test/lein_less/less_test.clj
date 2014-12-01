@@ -8,17 +8,12 @@
   (testing " run-compiler "
     (run-compiler  :javascript
                    {:project-root "sample/example"
-                    :source-paths ["resources"]
-                    :target-path "css"})))
+                    :source-path "resources.less"
+                    :target-path "css.css"})))
 
-;; using a source dir and a target dir
-(run-compiler  :javascript
-                   {:project-root "sample/example"
-                    :source-paths ["less"]
-                    :target-path "css"})
 
 ;; using a source file and a target file only works with one source
 (run-compiler  :javascript
                    {:project-root "sample/bootstrap"
-                    :source-paths ["less/bootstrap.less"]
+                    :source-path "less/bootstrap.less"
                     :target-path "../css-target/bootstrap.css"})

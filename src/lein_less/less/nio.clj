@@ -170,8 +170,8 @@
                skip-tree))))
        @paths))))
 
-(defn compilation-units [src-paths target-path]
-  (let [src-paths (map as-path src-paths)
+(defn compilation-units [src-path target-path]
+  (let [src-paths [(as-path src-path)]
         ^Path target-path (as-path target-path)]
     (->>
       (for [^Path src-path src-paths
@@ -182,17 +182,3 @@
           (when fname {:src src :dst dst})))
       (remove empty?)
       )))
-
-
-(defn adapt-paths [{:keys [project-root source-paths target-path] :as less-data}]
-
-  (let [^Path root (as-path project-root)]
-    (assert (exists? root))
-    {:source-paths (->> source-paths
-                        (map (partial resolve root))
-                        (map absolute)
-                        (filter exists?)
-                        vec)
-     :target-path (->> target-path
-                       (resolve root)
-                       (absolute))}))

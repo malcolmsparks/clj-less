@@ -34,7 +34,7 @@
   "Take a sequence of src/dst pairs, compiles each pair."
   [units on-error]
   (doseq [{:keys [^Path src ^Path dst]} units]
-    (println (format "%s => %s" (nio/fstr  src) (nio/fstr  dst)))
+    (println "Please wait, compiling: "(format "%s => %s" (nio/fstr  src) (nio/fstr  dst)))
     (try
       (compile-resource src dst)
       (catch LessError ex
