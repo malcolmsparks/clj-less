@@ -21,8 +21,8 @@ Add `[malcolmsparks/lein-less "1.7.3"]` to your `project.clj` dependencies:
 
   (run-compiler  :javascript
                  {:project-root "sample/example"
-                  :source-paths ["less"]
-                  :target-path "css"}))
+                  :source-path "your-less-file.less"
+                  :target-path "your-css-file.css"}))
 
 ```
 
