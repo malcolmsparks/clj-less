@@ -6,19 +6,21 @@
   (:import [java.nio.file Path]
            (java.io IOException)
            (javax.script ScriptEngineManager ScriptEngine ScriptContext)
-           (lein-less.less LessError)))
+           (lein_less.less LessError)))
 
 
 (def version "1.7.2")
-(def less-js (format "lein_less.less/less-rhino-%s.js" version))
-(def lessc-js (format "lein_less.less/lessc.js"))
+(def less-js (format "lein_less/less/less-rhino-%s.js" version))
+(def lessc-js (format "lein_less/less/lessc.js"))
 
 
 (defn initialise
   "Load less compiler resources required to compile less files to css. Must be called before invoking compile."
   []
   (engine/eval! (io/resource less-js) less-js)
-  (engine/eval! (io/resource lessc-js) lessc-js))
+  (engine/eval! (io/resource lessc-js) lessc-js)
+  )
+
 
 
 (defn compile-resource
@@ -29,10 +31,10 @@
 
 
 (defn compile-project
-  "Take a normalised project configuration and a sequence of src/dst pairs, compiles each pair."
-  [project units on-error]
+  "Take a sequence of src/dst pairs, compiles each pair."
+  [units on-error]
   (doseq [{:keys [^Path src ^Path dst]} units]
-    (println (format "%s => %s" (nio/fstr project src) (nio/fstr project dst)))
+    (println "Please wait, compiling: "(format "%s => %s" (nio/fstr  src) (nio/fstr  dst)))
     (try
       (compile-resource src dst)
       (catch LessError ex
