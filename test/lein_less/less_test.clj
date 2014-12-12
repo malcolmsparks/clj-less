@@ -13,7 +13,7 @@
 
 
 ;; using a source file and a target file only works with one source
-(run-compiler  :javascript
+#_(run-compiler  :javascript
                    {:project-root "sample/bootstrap"
                     :source-path "less/bootstrap.less"
                     :target-path "../css-target/bootstrap.css"})

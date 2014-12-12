@@ -1,4 +1,4 @@
-(defproject malcolmsparks/lein-less "1.7.3"
+(defproject tangrammer/lein-less "1.7.3"
   :description "Clojure less CSS compiler "
   :url "http://github.com/malcolmsparks/lein-less"
   :license {:name "Eclipse Public License"
