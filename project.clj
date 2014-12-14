@@ -10,4 +10,6 @@
 
   :resource-paths ["resources"]
 
-  :dependencies [[org.clojure/clojure "1.6.0"]])
+  :dependencies []
+
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.6.0"]]}})
