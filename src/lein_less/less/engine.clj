@@ -6,12 +6,9 @@
            (lein_less.less LessError)
            (java.util Map)))
 
-
 (def ^:private ^ScriptEngineManager engine-manager (ScriptEngineManager.))
 
-
 (def ^:dynamic ^:private ^ScriptEngine *engine* nil)
-
 
 (defn create-engine
   "Create a new script engine for the specified name. E.g. rhino, nashorn."

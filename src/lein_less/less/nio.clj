@@ -23,11 +23,9 @@
                                StandardWatchEventKinds/ENTRY_DELETE
                                StandardWatchEventKinds/ENTRY_MODIFY]))
 
-
 (defprotocol PathCoercions
   "Coerce between various 'resource-namish' things. Intended for internal use."
   (^{:tag Path} as-path [x] "Coerce argument to a path."))
-
 
 (extend-protocol PathCoercions
   nil
@@ -180,5 +178,4 @@
               [_ fname ext] (re-matches #"^(.+)[.]([^.]+)$" (.toString dst))
               dst (.resolve (.getParent dst) (format "%s.%s" fname "css"))]
           (when fname {:src src :dst dst})))
-      (remove empty?)
-      )))
+      (remove empty?))))
