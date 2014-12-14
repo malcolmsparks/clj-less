@@ -1,9 +1,9 @@
-(ns lein-less.less.engine
+(ns clj-less.engine
   (:require [clojure.java.io :as jio])
   (:import (javax.script ScriptEngineManager ScriptEngine ScriptContext Bindings ScriptException)
            (java.nio.file Path)
            (java.io File Reader)
-           (lein_less.less LessError)
+           (clj_less LessError)
            (java.util Map)))
 
 (def ^:private ^ScriptEngineManager engine-manager (ScriptEngineManager.))

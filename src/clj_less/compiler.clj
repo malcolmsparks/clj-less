@@ -1,18 +1,18 @@
-(ns lein-less.less.compiler
+(ns clj-less.compiler
   (:refer-clojure :exclude [compile])
   (:require
    [clojure.java.io :as io]
-   [lein-less.less.nio :as nio]
-   [lein-less.less.engine :as engine])
+   [clj-less.nio :as nio]
+   [clj-less.engine :as engine])
   (:import
    (java.nio.file Path)
    (java.io IOException)
    (javax.script ScriptEngineManager ScriptEngine ScriptContext)
-   (lein_less.less LessError)))
+   (clj_less LessError)))
 
 (def version "1.7.2")
-(def less-js (format "lein_less/less/less-rhino-%s.js" version))
-(def lessc-js (format "lein_less/less/lessc.js"))
+(def less-js (format "less-rhino-%s.js" version))
+(def lessc-js (format "lessc.js"))
 
 (defn initialise
   "Load less compiler resources required to compile less files to css. Must be called before invoking compile."

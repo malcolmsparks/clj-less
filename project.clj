@@ -1,6 +1,6 @@
-(defproject malcolmsparks/lein-less "1.7.3"
-  :description "Clojure less CSS compiler "
-  :url "http://github.com/malcolmsparks/lein-less"
+(defproject malcolmsparks/clj-less "1.7.3"
+  :description "Clojure Less CSS compiler "
+  :url "http://github.com/malcolmsparks/clj-less"
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
 

@@ -1,5 +1,5 @@
-(ns lein-less.less-test
-  (:require [lein-less.less :refer (run-compiler)]
+(ns clj-less.less-test
+  (:require [clj-less.less :refer (run-compiler)]
             [clojure.test :refer :all]
             [clojure.repl :refer (apropos dir doc find-doc pst source)]))
 

@@ -1,10 +1,11 @@
-(ns lein-less.less.compiler-test
-  (:import (lein_less.less LessError))
-  (:require [clojure.repl :refer (apropos dir doc find-doc pst source)]
-            [clojure.test :refer :all]
-            [lein-less.less.compiler :refer :all]
-            [lein-less.less.engine :as engine]
-            [lein-less.less.nio :as nio]))
+(ns clj-less.less.compiler-test
+  (:require
+   [clojure.repl :refer (apropos dir doc find-doc pst source)]
+   [clojure.test :refer :all]
+   [clj-lessc.less.compiler :refer :all]
+   [clj-lessc.less.engine :as engine]
+   [clj-lessc.less.nio :as nio])
+  (:import (clj_lessc LessError)))
 
 
 (def ^:dynamic *tmp* nil)
@@ -21,9 +22,7 @@
       (initialise)
       (test))))
 
-
 (use-fixtures :each (comp (fn run [f] (f)) with-tmp-dir with-engine))
-
 
 (deftest test-compile-simple
   (let [input (nio/resolve *tmp* "simple-test.less")
