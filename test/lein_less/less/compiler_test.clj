@@ -1,9 +1,10 @@
-(ns leiningen.less.compiler-test
-  (:import (leiningen.less LessError))
-  (:require [clojure.test :refer :all]
-            [leiningen.less.compiler :refer :all]
-            [leiningen.less.engine :as engine]
-            [leiningen.less.nio :as nio]))
+(ns lein-less.less.compiler-test
+  (:import (lein_less.less LessError))
+  (:require [clojure.repl :refer (apropos dir doc find-doc pst source)]
+            [clojure.test :refer :all]
+            [lein-less.less.compiler :refer :all]
+            [lein-less.less.engine :as engine]
+            [lein-less.less.nio :as nio]))
 
 
 (def ^:dynamic *tmp* nil)
@@ -38,8 +39,6 @@
     (when (is (nio/exists? output))
       (is (= "a b {\n  c: d;\n}\n" (slurp output))))
     ))
-
-
 (deftest test-compile-error
   (let [input (nio/resolve *tmp* "error-test.less")
         output (nio/resolve *tmp* "error-test.css")

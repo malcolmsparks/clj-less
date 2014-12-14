@@ -3,7 +3,7 @@
   (:import (javax.script ScriptEngineManager ScriptEngine ScriptContext Bindings ScriptException)
            (java.nio.file Path)
            (java.io File Reader)
-           (lein-less.less LessError)
+           (lein_less.less LessError)
            (java.util Map)))
 
 
@@ -18,7 +18,6 @@
   ([] (create-engine "javascript"))
   ([^String engine-type]
    (.getEngineByName engine-manager engine-type)))
-
 
 (defn with-engine* [engine-param body-fn]
   (let [engine (if (string? engine-param) (create-engine engine-param) engine-param)]

@@ -126,7 +126,7 @@ less.Parser.fileLoader = function (file, currentFileInfo, callback, env) {
         return undefined;
     };
 
-    var error_var = RT['var']("leiningen.less.engine", "error!");
+    var error_var = RT['var']("lein-less.less.engine", "error!");
     lessc.error = function (ctx, options) {
         var message = lessc.formatError(ctx, options);
         if (ctx.javaException) {
@@ -147,6 +147,7 @@ less.Parser.fileLoader = function (file, currentFileInfo, callback, env) {
         var options = {filename: in_file};
         var input = lessc.read(in_file, 'utf-8');
         try {
+
             var parser = new less.Parser(options);
             parser.parse(input, function (e, root) {
                 if (e) {
@@ -164,6 +165,9 @@ less.Parser.fileLoader = function (file, currentFileInfo, callback, env) {
                 return 0;
             }
             else {
+                print("out_file: " + out_file);
+                for (prop in options) { print("options[" + prop + "] = " + options[prop]); };
+
                 lessc.error(e, options);
             }
         }

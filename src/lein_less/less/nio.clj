@@ -58,11 +58,12 @@
   (assoc jio/default-streams-impl
     :make-input-stream (fn [^Path p _] (Files/newInputStream p default-open-options))
     :make-output-stream (fn [^Path p opts] (Files/newOutputStream p default-open-options))))
-
+;; I removed relatives references as I realised that paths coming here were absolute
 (defn fstr
-  "Returns a string representing the file, relative to the project root."
-  [project path]
-  (.toString (.relativize (as-path (:root project)) (as-path path))))
+  "Returns a string representing the file"
+  [path]
+  (str (as-path path)))
+
 
 (defn resolve
   "Resolve the pathish argument relative the the first."
@@ -169,8 +170,8 @@
                skip-tree))))
        @paths))))
 
-(defn compilation-units [src-paths target-path]
-  (let [src-paths (map as-path src-paths)
+(defn compilation-units [src-path target-path]
+  (let [src-paths [(as-path src-path)]
         ^Path target-path (as-path target-path)]
     (->>
       (for [^Path src-path src-paths
@@ -181,22 +182,3 @@
           (when fname {:src src :dst dst})))
       (remove empty?)
       )))
-
-(defn watch-resources [project paths callback]
-  (let [^WatchService watcher (.newWatchService (FileSystems/getDefault))]
-    (println "Found {less} source paths: ")
-    (doseq [path paths
-            child (descendents directory? path)]
-      (println (format "  %s" (fstr project child)))
-      (.register ^Path child watcher watch-opts-cdm))
-    (println "Watching for changes...")
-    (callback)
-    (try
-      (loop []
-        (let [key (.take watcher)]
-          (callback)
-          (.pollEvents key)
-          (.reset key)
-          (recur)))
-      (catch InterruptedException ex
-        nil))))
