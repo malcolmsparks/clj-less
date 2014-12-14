@@ -21,7 +21,7 @@
     (is (thrown-with-msg? LessError #"^Error: Oops" (eval! "throw Error('Oops')")))
     (is (thrown-with-msg? LessError #"^Oops$"
                           (eval! "importClass(Packages.clojure.lang.RT);
-                            var error = Packages.clojure.lang.RT['var']('clj_lessc.engine', 'error!')
+                            var error = Packages.clojure.lang.RT['var']('clj_less.engine', 'error!')
                             error['invoke'](null, 'Oops');")))
     (is (thrown? NullPointerException
                  (eval! "importClass(Packages.clojure.lang.RT);
@@ -43,7 +43,7 @@
   (with-engine "nashorn"
     (is (thrown-with-msg? LessError #"^Error: Oops" (eval! "throw Error('Oops')")))
     (is (thrown-with-msg? LessError #"^Oops$"
-                          (eval! "var error = Java.type('clojure.lang.RT')['var']('clj-lessc.less.engine', 'error!');
+                          (eval! "var error = Java.type('clojure.lang.RT')['var']('clj-less.less.engine', 'error!');
                             error['invoke'](null, 'Oops');")))
     (is (thrown? NullPointerException
                  (eval! "var rt_var = Java.type('clojure.lang.RT')['var'];

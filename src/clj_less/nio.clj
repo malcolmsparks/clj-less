@@ -66,8 +66,6 @@
 (defn resolve
   "Resolve the pathish argument relative the the first."
   ^Path [context to-resolve]
-  (println "context:" context)
-  (println "to-resolve:" to-resolve)
   (when-let [context ^Path (as-path context)]
     (if-let [rel ^Path (as-path to-resolve)]
       (.resolve context rel)

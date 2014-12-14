@@ -126,7 +126,7 @@ less.Parser.fileLoader = function (file, currentFileInfo, callback, env) {
         return undefined;
     };
 
-    var error_var = RT['var']("clj-lessc.engine", "error!");
+    var error_var = RT['var']("clj-less.engine", "error!");
     lessc.error = function (ctx, options) {
         var message = lessc.formatError(ctx, options);
         if (ctx.javaException) {

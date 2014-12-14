@@ -2,10 +2,10 @@
   (:require
    [clojure.repl :refer (apropos dir doc find-doc pst source)]
    [clojure.test :refer :all]
-   [clj-lessc.less.compiler :refer :all]
-   [clj-lessc.less.engine :as engine]
-   [clj-lessc.less.nio :as nio])
-  (:import (clj_lessc LessError)))
+   [clj-less.less.compiler :refer :all]
+   [clj-less.less.engine :as engine]
+   [clj-less.less.nio :as nio])
+  (:import (clj_less LessError)))
 
 
 (def ^:dynamic *tmp* nil)
