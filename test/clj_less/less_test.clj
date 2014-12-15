@@ -5,15 +5,17 @@
 
 ;; todo: become it to unit test
 (deftest test-compile-simple
-  (testing " run-compiler "
-    (run-compiler  :javascript
-                   {:project-root "sample/example"
-                    :source-path "resources.less"
-                    :target-path "css.css"})))
+  (testing "run-compiler "
+    (run-compiler
+     {:engine :javascript
+      :project-root "sample/example"
+      :source-path "resources.less"
+      :target-path "css.css"})))
 
 
 ;; using a source file and a target file only works with one source
-(run-compiler  :javascript
-                   {:project-root "sample/bootstrap"
-                    :source-path "less/bootstrap.less"
-                    :target-path "../css-target/bootstrap.css"})
+#_(run-compiler
+   {:engine :javascript
+    :project-root "sample/bootstrap"
+    :source-path "less/bootstrap.less"
+    :target-path "../css-target/bootstrap.css"})

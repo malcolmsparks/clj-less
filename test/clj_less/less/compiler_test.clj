@@ -2,9 +2,9 @@
   (:require
    [clojure.repl :refer (apropos dir doc find-doc pst source)]
    [clojure.test :refer :all]
-   [clj-less.less.compiler :refer :all]
-   [clj-less.less.engine :as engine]
-   [clj-less.less.nio :as nio])
+   [clj-less.compiler :refer :all]
+   [clj-less.engine :as engine]
+   [clj-less.nio :as nio])
   (:import (clj_less LessError)))
 
 

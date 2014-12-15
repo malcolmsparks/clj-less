@@ -1,4 +1,5 @@
 (ns clj-less.less
+  (:refer-clojure :exclude [load])
   (:require
    [clj-less.compiler :as compiler]
    [clj-less.engine :as engine]
@@ -13,26 +14,16 @@
   (binding [*out* *err*]
     (println (.getMessage error))))
 
-(defn adapt-path [project-root path]
-  (let [^Path root (nio/as-path project-root)]
-    (assert (nio/exists? root))
-    (->> path
-         (nio/resolve root)
-         (nio/absolute))))
-
-(defn check-file-extension [path extension]
-  (let [base (st/split path #"\.")]
-    (when (> (count base ) 1)
-      (= (last (st/split path #"\.")) (name extension)))))
+(defn load [filename]
+  (throw (ex-info "Should redef this var" {:filename filename})))
 
 (defn run-compiler
   "Run the lesscss compiler."
-  [engine {:keys [project-root source-path target-path] :as data}]
-
-  (let [target-path (adapt-path project-root target-path)]
-    (do
-      (println "Compiling {less} css ...")
-      (println "Compilation unit is" {:src source-path :dst target-path})
+  [{:keys [engine source-path target-path loader]}]
+  (do
+    (println "Compiling {less} css ...")
+    (println "Compilation unit is" {:src source-path :dst target-path})
+    (with-redefs [load (or loader slurp)]
       (engine/with-engine (name engine)
         (compiler/initialise)
         (-> [{:src source-path :dst target-path}]

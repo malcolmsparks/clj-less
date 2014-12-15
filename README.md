@@ -17,14 +17,15 @@ Add `[malcolmsparks/clj-less "1.7.3"]` to your `project.clj` dependencies:
 (ns your-ns
   (:require [clj-less.less :refer (run-compiler)]))
 
-  (run-compiler :javascript
-                {:project-root "sample/example"
-                 :source-path "your-less-file.less"
-                 :target-path "your-css-file.css"}))
+  (run-compiler
+    {:engine :nashorn
+     :project-root "sample/example"
+     :source-path "your-less-file.less"
+     :target-path "your-css-file.css"}))
 
 ```
 
-Being first argument the selected compiler, availables are:   ```:javascript :rhino :nashorn ```
+Valid values for ```:engine``` are ```:javascript```, ```:rhino``` and ```:nashorn ```
 
 ## References
 

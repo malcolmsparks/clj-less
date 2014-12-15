@@ -115,7 +115,8 @@ less.Parser.fileLoader = function (file, currentFileInfo, callback, env) {
         type = "nashorn";
     }
 
-    var slurp_var = RT['var']("clojure.core", "slurp");
+    //    var slurp_var = RT['var']("clojure.core", "slurp");
+    var slurp_var = RT['var']("clj-less.less", "load");
     lessc.read = function (filename, encoding) {
         return String(slurp_var['invoke'](filename));
     };
